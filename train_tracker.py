@@ -88,7 +88,15 @@ if __name__ == '__main__':
     for i in range(906, 922):
         j.append(parse_train_data(i))
     # Write the Json
-    file_name = strftime("%d-%m-%Y_%H:%M:%S", gmtime())+'.json'
+    file_name = strftime("Tournai-Mons_%d-%m-%Y_%H:%M:%S", gmtime())+'.json'
+    with open(file_name, 'w') as f:
+        f.write(json.dumps(j, indent=4, separators=(',', ': '),
+                            sort_keys=True, ensure_ascii=False))
+    j = []
+    for i in range(928, 944):
+        j.append(parse_train_data(i))
+    # Write the Json
+    file_name = strftime("Mons-Tournai_%d-%m-%Y_%H:%M:%S", gmtime())+'.json'
     with open(file_name, 'w') as f:
         f.write(json.dumps(j, indent=4, separators=(',', ': '),
                             sort_keys=True, ensure_ascii=False))
