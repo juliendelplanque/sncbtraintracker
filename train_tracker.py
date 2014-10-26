@@ -1,7 +1,10 @@
+#!/bin/python3
+# -*- coding: utf-8 -*-
+
 from urllib.request import urlopen
 import bs4 as BeautifulSoup
 import json
-import date
+from time import gmtime, strftime
 
 def clean_string(string):
     if string != None:
@@ -85,6 +88,7 @@ if __name__ == '__main__':
     for i in range(906, 922):
         j.append(parse_train_data(i))
     # Write the Json
-    with open("test.json", 'w') as f:
+    file_name = strftime("%d-%m-%Y_%H:%M:%S", gmtime())+'.json'
+    with open(file_name, 'w') as f:
         f.write(json.dumps(j, indent=4, separators=(',', ': '),
                             sort_keys=True, ensure_ascii=False))
